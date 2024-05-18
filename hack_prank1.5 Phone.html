@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hack Prank</title>
+    <style>
+        body {
+            background-color: black;
+            color: white;
+            font-family: monospace;
+            overflow: hidden;
+            margin: 0;
+            padding: 0;
+        }
+        .code {
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            padding: 10px;
+        }
+        .modal, .extra-modal {
+            display: none;
+            position: fixed;
+            z-index: 2;
+            background-color: #333;
+            color: white;
+            border: 2px solid white;
+            padding: 20px;
+            text-align: center;
+        }
+        .main-modal, .large-modal {
+            width: 80%;
+            height: auto;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 4;
+        }
+        .progress-bar {
+            width: 100%;
+            background-color: #ddd;
+        }
+        .progress {
+            width: 1%;
+            height: 20px; /* Ajustado para smartphones */
+            background-color: white;
+        }
+    </style>
+</head>
+<body>
+    <div id="hack" class="code"></div>
+    <div id="myModal" class="modal main-modal">
+        <p>Descargando información...</p>
+        <div class="progress-bar">
+            <div id="progress" class="progress"></div>
+        </div>
+    </div>
+    <div id="largeModal" class="modal large-modal">
+        <p>Accediendo a datos sensibles...</p>
+        <div class="progress-bar">
+            <div class="progress" id="largeProgress"></div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', (event) => {
+            const codeContainer = document.getElementById('hack');
+            const modal = document.getElementById('myModal');
+            const progressBar = document.getElementById('progress');
+            const largeModal = document.getElementById('largeModal');
+            const largeProgress = document.getElementById('largeProgress');
+
+            const codeLines = [
+                "Connecting to server...",
+                "Connection established.",
+                "Accessing database...",
+                "Downloading files...",
+                "Decrypting data...",
+                "Bypassing firewall...",
+                "Uploading malware...",
+                "Executing commands...",
+                "Root access granted.",
+                "Fetching passwords...",
+                "Clearing logs...",
+                "Disconnecting...",
+                "Hack complete."
+            ];
+
+            const extraMessages = [
+                "Accediendo a información de WhatsApp...",
+                "Obteniendo historial del navegador...",
+                "Accediendo a la cámara trasera...",
+                "Accediendo a la cámara frontal...",
+                "Activando el micrófono...",
+                "Accediendo a contactos...",
+                "Leyendo mensajes de texto...",
+                "Obteniendo ubicación GPS...",
+                "Extrayendo datos de Facebook...",
+                "Accediendo a la galería de fotos...",
+                "Accediendo a correos electrónicos...",
+                "Accediendo a archivos del sistema...",
+                "Obteniendo contraseñas guardadas...",
+                "Obteniendo historial de llamadas...",
+                "Accediendo a aplicaciones bancarias...",
+                "Obteniendo datos de Instagram...",
+                "Obteniendo datos de Twitter...",
+                "Accediendo a la lista de tareas...",
+                "Leyendo notas guardadas...",
+                "Accediendo a redes sociales..."
+            ];
+
+            function getRandomCodeLine() {
+                const line = codeLines[Math.floor(Math.random() * codeLines.length)];
+                return line;
+            }
+
+            function getRandomExtraMessage() {
+                const message = extraMessages[Math.floor(Math.random() * extraMessages.length)];
+                return message;
+            }
+
+            function addCodeLine() {
+                const line = getRandomCodeLine();
+                const newLine = document.createElement('div');
+                newLine.textContent = line;
+                codeContainer.appendChild(newLine);
+                window.scrollTo(0, document.body.scrollHeight);
+            }
+
+            function startHackSimulation() {
+                setInterval(addCodeLine, 500); // Add a new line every 500ms
+            }
+
+            function createExtraModals() {
+                for (let i = 0; i < 20; i++) {
+                    const extraModal = document.createElement('div');
+                    extraModal.className = 'extra-modal';
+                    extraModal.style.top = Math.random() * 80 + 'vh';
+                    extraModal.style.left = Math.random() * 80 + 'vw';
+                    extraModal.innerHTML = `
+                        <p>${getRandomExtraMessage()}</p>
+                        <div class="progress-bar">
+                            <div class="progress"></div>
+                        </div>
+                    `;
+                    document.body.appendChild(extraModal);
+                    showExtraModal(extraModal, i * 150); // Show each modal with a slight delay
+                }
+            }
+
+            function showExtraModal(modal, delay) {
+                setTimeout(() => {
+                    modal.style.display = 'block';
+                    let progress = 1;
+                    const progressBar = modal.querySelector('.progress');
+                    const interval = setInterval(() => {
+                        if (progress >= 100) {
+                            clearInterval(interval);
+                            setTimeout(() => {
+                                modal.style.display = 'none';
+                            }, 300); // Keep the modal visible for 0.3 seconds after reaching 100%
+                        } else {
+                            progress++;
+                            progressBar.style.width = progress + '%';
+                        }
+                    }, 30); // Update the progress bar every 30ms
+                }, delay);
+            }
+
+            function showModal() {
+                modal.style.display = 'block';
+                let progress = 1;
+                const interval = setInterval(() => {
+                    if (progress >= 100) {
+                        clearInterval(interval);
+                        setTimeout(() => {
+                            modal.style.display = 'none';
+                        }, 300); // Keep the modal visible for 0.3 seconds after reaching 100%
+                    } else {
+                        progress++;
+                        progressBar.style.width = progress + '%';
+                    }
+                }, 30); // Update the progress bar every 30ms
+                createExtraModals();
+            }
+
+            function showLargeModal() {
+                largeModal.style.display = 'block';
+                let progress = 1;
+                const interval = setInterval(() => {
+                    if (progress >= 100) {
+                        clearInterval(interval);
+                        setTimeout(() => {
+                            largeModal.style.display = 'none';
+                        }, 300); // Keep the modal visible for 0.3 seconds after reaching 100%
+                    } else {
+                        progress++;
+                        largeProgress.style.width = progress + '%';
+                    }
+                }, 30); // Update the progress bar every 30ms
+            }
+
+            startHackSimulation();
+            setTimeout(showModal, 3000); // Show the modal after 3 seconds
+            setTimeout(showLargeModal, 3300); // Show the large modal after 3.3 seconds
+        });
+    </script>
